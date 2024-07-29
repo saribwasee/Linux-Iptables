@@ -62,6 +62,10 @@ INPUT modules will use for incomming traffic to our host similarly OUTPUT will u
 `sudo iptables -A INPUT -p tcp -s 192.168.41.0/24 --dport 80 -j REJECT`
 
 
+##When we are using ping, we are sending "echo request" (type 8) type of ICMP packets & in return we are getting "echo-reply" (type 0) "ICMP" packets, so we can use FORWARD filter to utilize traffic manipulation
+
+`sudo iptables -t filter -A FORWARD -p imcp -s 10.0.0.1 -d 192.168.0.1 --icmp-tpye echo request -j DROP`
+
 
 
 
